@@ -1,4 +1,0 @@
-1. C++ basic syntax
-2. Conditional statements
-3. Structure of the C++ programming language
-4. Understanding how the code is compiled and executed: 
