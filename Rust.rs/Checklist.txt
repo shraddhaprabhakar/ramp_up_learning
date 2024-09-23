@@ -1,0 +1,4 @@
+1. Introduction to Rust
+2. Introduction to Cargo
+3. Variables, Basic Types & Operators
+4. Control Flow Statements
