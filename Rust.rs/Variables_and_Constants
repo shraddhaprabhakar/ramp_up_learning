@@ -1,4 +1,15 @@
+//Variables
 fn main() {
-let x = 20; //implicit declaration, the compiler will deduce the type
+  let x = 20; //implicit declaration, the compiler will deduce the type
 println!(" x is : {} " , x);
+}
+
+
+//Constants
+fn main() 
+{ 
+  const SECONDS_IN_MINUTE : u32 = 60;
+  const SECONDS_IN_MINUTE : u32 = 60;  //cannot do this, cannot redefine a constant unlike variables
+  println!("{}" , SECONDS_IN_MINUTE);
+
 }
