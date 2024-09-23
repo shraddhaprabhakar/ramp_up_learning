@@ -1,0 +1,4 @@
+fn main() {
+let x = 20; //implicit declaration, the compiler will deduce the type
+println!(" x is : {} " , x);
+}
