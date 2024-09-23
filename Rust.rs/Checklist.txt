@@ -1,4 +1,7 @@
  Introduction to Rust
- Introduction to Cargo
- Variables, Basic Types & Operators
- Control Flow Statements
+ Introduction to Cargo and rustfmt
+ Variables, Constants and Name shadowing
+ Data Types
+ Console input
+ Arithmetic and Type casting
+ Conditional statements
