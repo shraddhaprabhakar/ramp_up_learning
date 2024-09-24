@@ -1,0 +1,11 @@
+//prelude has all the built in functionality so we dont have to import it, instead we can directly use the rust standard library with functions like fn and println
+use std::io
+fn main() {
+  let mut input = String::new(); //creating new empty string object
+  io::stdin().read_line(&mut input).expect("failed to read line"); // :: this is path separator operator so it separtes the packages and modules, like package::module::func
+  // the above line is allowing us to change the input which is stored in new string(which is empty now) and store it which is read by io::stdin()
+  println!("{}", input);
+}
+
+
+
