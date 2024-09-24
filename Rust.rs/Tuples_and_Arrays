@@ -20,4 +20,5 @@ fn main() {
   let mut arr1 = [1,2,3,4,5];
   arr[4] = 10; //this will work as it is now mutable
   println!("{}", arr[4]);
+  let mut array1: [i32;5] = [1,2,3,4,5];  //this means we have an array of type i32 and size is 5
 }
