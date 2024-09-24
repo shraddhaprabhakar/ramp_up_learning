@@ -1,0 +1,5 @@
+fun main() {
+  let x: u32 = 20; // type integer - there are many types u8,u16,u32,u64,u128 is all unsigned int and i8,i16 and so on is int.
+  let floating_point: f32 = 20.56; // type floating - there are 2 types f32 and f64
+  let true_or_false: bool = true; //bool is the boolean data type
+}
