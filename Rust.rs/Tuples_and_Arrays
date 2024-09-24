@@ -1,0 +1,11 @@
+fn main() {
+let tup: (i32, f32, bool,char) = (20, 20.34, true,'s'); //these are immutable, to make it mutable use the mut keyword
+let tup2: (i8, f64 , char) = (1, 8.87, 'u'); //tup and tup2 are not same.
+println!("{}", tup);
+println!("{}", tup2);
+println!("{}", tup.0); //gives 1st element in tup
+
+let mut tuple: (i8, bool) = (8, false);
+tuple.0 = 10;  //changes first element to 10 as it is a mutable tuple
+println!("{}",tuple.0);
+}
