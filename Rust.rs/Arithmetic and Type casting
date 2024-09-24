@@ -15,6 +15,8 @@ use std::io
 fn main() {
   let mut input = String::new();
   io::stdin().read_line(&mut input).expect("could not read line");
-  let int_input: i64 = input.trim().parse().unwrap(); //
-  println!("{}", input);
+  let int_input: i64 = input.trim().parse().unwrap(); // .trim() gives us a new line, after we hit enter in a string there is an empty space which we cant see, .trim removes that extra space if not we get an error while conversion
+  //parse the string and give us integer- work of parse()
+  //take the integer and unwrap it into actual integer type and give us - work of unwrap()
+  println!("{}", int_input+2); //to test
 }
