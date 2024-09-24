@@ -1,3 +1,11 @@
 fn main() {
+// let x: i8 = 20;
+// let x = 255i8;
+// let x = 127_i8;
+// let x = 2127_000 as i8; //212
+// let x = 10_i32;
 
+let x = 27_000 as i64;
+let y = 10_i32;
+let z = x/(y as i64);  or x as i32/y;  //this is type casting
 }
