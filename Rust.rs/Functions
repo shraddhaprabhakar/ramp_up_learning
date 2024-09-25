@@ -1,6 +1,6 @@
 fn main() {
-  add_numbers(20,30);
+    add_numbers(20,30);
 } 
 fn add_numbers(x: i32, y: i32) {
-  println!("The sum is: {}", x+y);
+    println!("The sum is: {}", x+y);
 }
