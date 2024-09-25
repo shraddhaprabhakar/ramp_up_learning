@@ -1,3 +1,0 @@
-Rust: It is a systems programming language, safety which is guaranteed at compile time, blazing concurrency which is a lot easier when things are safe, and very fast.
-Core firefox written in rust and hence it became a faster web browser.
-CARGO: package manager, test runner and documentation generator.
