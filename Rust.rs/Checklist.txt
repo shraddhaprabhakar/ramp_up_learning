@@ -3,6 +3,8 @@
  Variables, Constants and Name shadowing
  Data Types
  Console input
+ Tuples
+ Arrays
  Arithmetic and Type casting
  Conditional statements
  Functions, statements and expressions
