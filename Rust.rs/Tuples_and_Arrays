@@ -1,10 +1,10 @@
 TUPLES
 fn main() {
-let tup: (i32, f32, bool,char) = (20, 20.34, true,'s'); //these are immutable, to make it mutable use the mut keyword
-let tup2: (i8, f64 , char) = (1, 8.87, 'u'); //tup and tup2 are not same.
-println!("{}", tup);
-println!("{}", tup2);
-println!("{}", tup.0); //gives 1st element in tup
+    let tup: (i32, f32, bool,char) = (20, 20.34, true,'s'); //these are immutable, to make it mutable use the mut keyword
+    let tup2: (i8, f64 , char) = (1, 8.87, 'u'); //tup and tup2 are not same.
+    println!("{}", tup);
+    println!("{}", tup2);
+    println!("{}", tup.0); //gives 1st element in tup
 
 let mut tuple: (i8, bool) = (8, false);
 tuple.0 = 10;  //changes first element to 10 as it is a mutable tuple
@@ -14,11 +14,11 @@ println!("{}",tuple.0);
 
 ARRAYS
 fn main() {
-  let arr = [1,2,3,4,5]; 
-  arr[4]; //prints 4th element
-  arr[4] = 10; //cannot do this as it is not mutable
-  let mut arr1 = [1,2,3,4,5];
-  arr[4] = 10; //this will work as it is now mutable
-  println!("{}", arr[4]);
-  let mut array1: [i32;5] = [1,2,3,4,5];  //this means we have an array of type i32 and size is 5
+    let arr = [1,2,3,4,5]; 
+    arr[4]; //prints 4th element
+    arr[4] = 10; //cannot do this as it is not mutable
+    let mut arr1 = [1,2,3,4,5];
+    arr[4] = 10; //this will work as it is now mutable
+    println!("{}", arr[4]);
+    let mut array1: [i32;5] = [1,2,3,4,5];  //this means we have an array of type i32 and size is 5
 }
