@@ -6,3 +6,7 @@ fn main() {
     }
     println!("{}, {}", x, y); //error as after the above line y is destroyed from scope so we get error message at compile time.
 }
+but
+fn main() {
+    
+}
