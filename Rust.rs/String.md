@@ -5,3 +5,4 @@ We cannot access strings using index as there are so many languages out there in
 A borrowed string slice is internally made up of a pointer to some bytes and a length.
 A string is made up of a pointer to some bytes, a length and capacity that may be higher than what is being used.
 You can use string.bytes() to access the string index bytes or .char() method but technically its very complex.
+We can use .nth(3) instead of indexing into the string directly.
