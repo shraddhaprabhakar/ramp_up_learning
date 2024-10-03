@@ -9,3 +9,11 @@ Ex:
 let s1 = String::from("abc"); //creating string s1
 let s2 = s1; // assigning s1 to s2(at this point the value of s1 is moved to s2 as there can be only one owner)
 println!( "{}", s1); //this will give error as s1 has been moved to s2 and it does not exist on stack temporarily till it gets the ownership back , borrow of moved value s1 is the compiler error.
+When we create s1, in stack ptr len and capacity gets created wih value 3 and in heap data abc is there and ptr points to a, when we assign s1 to s2, a new stack ptr len and capacity get created with name s2 and value on heap as abc with ptr pointing a but the s1 gets invalidated although it still exists on stack as the value has just been moved as we can have only 1 owner, this gives safety. The compiler just understands s1 as uninitialised and wont let you use it.
+If s1 was mutable then it would work.
+What if we dont want to move value and just copy it? we can do it as follows:
+ let s1 = String::from("abc");
+ let s2 = s1.clone();
+ println!("{}",s1); // clone method not only creates 2 separate variables s1 ans s2 but also copies both the stack and heap values separately and adjusts s2's pointer to point to it.
+We use the term copy to copy only the stack data but when heap data is also involved along with stack, we use clone. Clone is like deep copy.
+When the value is dropped, the destructor is called and popped, the heap portion is immediately freed and the stack portion is immediately popped, so no leaks and no dangling pointers.
