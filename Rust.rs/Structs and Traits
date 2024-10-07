@@ -1,0 +1,18 @@
+In other languages we have classes, in Rust we have Structs.
+syntax:
+struct RedFox {
+    enemy : bool,
+    life : u8,
+}
+
+instantiating a rust struct:
+let fox = RedFox {
+}
+
+impl RedFox {
+    fn new() -> Self {
+      Self {                          //this is an associative function same as class methods 
+        enemy : true,                   //Self is basically RedFox struct name only
+        life : 70,
+}
+let fox = RedFox :: new();
