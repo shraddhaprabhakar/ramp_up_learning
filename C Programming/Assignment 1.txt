@@ -59,30 +59,39 @@ int main() {
         printf("\n1. Add New Book\n2. Update Book Quantity\n3. Search Book by Author\n4. Exit\nEnter choice: ");
         scanf("%d", &choice);
 
-        if (choice == 1) {
-            printf("Enter ID: ");
-            scanf("%d", &id);
-            printf("Enter Title: ");
-            scanf(" %[^\n]s", title);
-            printf("Enter Author: ");
-            scanf(" %[^\n]s", author);
-            printf("Enter Quantity: ");
-            scanf("%d", &quantity);
-            addBook(id, title, author, quantity);
-        } else if (choice == 2) {
-            printf("Enter ID to update: ");
-            scanf("%d", &id);
-            printf("Enter new quantity: ");
-            scanf("%d", &quantity);
-            updateBookQuantity(id, quantity);
-        } else if (choice == 3) {
-            printf("Enter Author: ");
-            scanf(" %[^\n]s", author);
-            searchBooksByAuthor(author);
-        } else if (choice == 4) {
-            break;
-        } else {
-            printf("Invalid choice!\n");
+        switch (choice) {
+            case 1:
+                printf("Enter ID: ");
+                scanf("%d", &id);
+                printf("Enter Title: ");
+                scanf(" %[^\n]s", title);
+                printf("Enter Author: ");
+                scanf(" %[^\n]s", author);
+                printf("Enter Quantity: ");
+                scanf("%d", &quantity);
+                addBook(id, title, author, quantity);
+                break;
+
+            case 2:
+                printf("Enter ID to update: ");
+                scanf("%d", &id);
+                printf("Enter new quantity: ");
+                scanf("%d", &quantity);
+                updateBookQuantity(id, quantity);
+                break;
+
+            case 3:
+                printf("Enter Author: ");
+                scanf(" %[^\n]s", author);
+                searchBooksByAuthor(author);
+                break;
+
+            case 4:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("Invalid choice! Please try again.\n");
         }
     }
 
