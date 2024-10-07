@@ -35,3 +35,6 @@ By default, reference is immutable.
 
 At any time we can have either 1 mutable reference or many number of immutable reference. This rule applies across all threads. 
 It is not safe to have multiple mutable references to the same variable at the same time without any locking. But if all the references are immutable then there is no problem.
+
+**LIFETIME**
+A lifetime is a borrow checker used to ensure all borrows are valid.
