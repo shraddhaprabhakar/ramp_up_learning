@@ -29,7 +29,7 @@ fn do_stuff(s: &String) {
 //do stuff
 }
 //here when we call do_stuff we are passing a reference to s1, and s1 retains ownership of the value. do_stuff borrows the reference to the value, at the end of the function the reference goes out of scope and gets dropped off so our borrowing ends at that point. Now when we call s1 in print statement it prints as value never moved.
-When we create a reference to s1, rust creates a pointer under the hood to s1, the rust lang automatically creates and deletes the pointer and makes sure they are always valid using a concept called lifetimes.
+When we create a reference to s1, rust creates a pointer under the hood to s1, the rust lang automatically creates and deletes the pointer and makes sure they are always valid using a concept called lifetimesz.
 Lifetimes can be summed up like a rule that references must always valid, this means u can never point to null.
 By default, reference is immutable.
 
