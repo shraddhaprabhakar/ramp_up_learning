@@ -1,4 +1,5 @@
 In other languages we have classes, in Rust we have Structs.
+**STRUCTS**
 syntax:
 struct RedFox {
     enemy : bool,
@@ -16,3 +17,18 @@ impl RedFox {
         life : 70,
 }
 let fox = RedFox :: new();
+
+Instead of struct inheritance( class inheritance ) we have traits in Rust
+
+**TRAITS**
+ex
+struct RedFox {
+    enemy : bool,
+    life : u32,
+}
+trait Noisy {
+    fn get_noise(&self) -> &str;
+}
+impl Noisy for RedFox {
+    fn get_noise(&self) -> &str {"Meow"}
+}
