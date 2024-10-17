@@ -61,14 +61,14 @@ int main() {
         cout << "4. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-
+__
         if (choice == 1) {   **//adding a product**
             cout << "Enter Product ID: ";
             cin >> id;
             cout << "Enter Product Name: ";
             cin.ignore();  **//This line ensures that any newline or remaining characters in the input buffer are ignored before taking the next string input. When we input the id, it ends with a newline ('\n'). If we don't use cin.ignore(), this newline will be captured by the getline() function, and it would result in an empty string.**
             getline(cin, name); **// This reads the entire line of input from the user, including spaces, and stores it in the string name. The getline() function reads everything up to the next newline character (\n), which makes it useful for multi-word inputs like a product name.**
-
+__
             cout << "Enter Product Category: ";
             getline(cin, category);
             cout << "Enter Stock Quantity: ";
