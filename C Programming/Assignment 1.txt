@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <string.h>
-
-#define MAX_BOOKS 100
+#include <stdlib.h> 
 
 // Define the structure for a Book
 struct Book {
@@ -9,18 +7,62 @@ struct Book {
     char title[50];
     char author[50];
     int quantity;
+    int updated;
 };
 
-// Array to store books and the current count of books
-struct Book library[MAX_BOOKS];
+// Pointer for dynamically allocated array of books
+struct Book* library = NULL;
 int book_count = 0;
+int capacity = 0;  
+
+// Custom recursive strcmp function
+int myStrcmp(const char *str1, const char *str2) {
+    if (*str1 == '\0' && *str2 == '\0') {
+        return 0;  // Both strings have ended, they are equal
+    }
+    if (*str1 != *str2) {
+        return (*str1 - *str2);  // Return difference if characters are not equal
+    }
+    return myStrcmp(str1 + 1, str2 + 1);  // Move to the next characters recursively
+}
+
+// Custom recursive strcpy function
+void myStrcpy(char *dest, const char *src) {
+    if (*src == '\0') {
+        *dest = '\0'; 
+        return;
+    }
+    *dest = *src;  // Copy current character
+    myStrcpy(dest + 1, src + 1);  // Recursively copy the next character
+}
+
+// Function to allocate more memory if needed
+void allocateMemory() {
+    if (capacity == 0) {  // Initial allocation
+        capacity = 1;
+        library = (struct Book*)malloc(capacity * sizeof(struct Book));
+        if (library == NULL) {
+            printf("Memory allocation failed!\n");
+            exit(1);  // Exit if memory allocation fails
+        }
+    } else if (book_count >= capacity) { 
+        capacity *= 2;
+        library = (struct Book*)realloc(library, capacity * sizeof(struct Book));
+        if (library == NULL) {
+            printf("Memory reallocation failed!\n");
+            exit(1);  // Exit if memory reallocation fails
+        }
+    }
+}
 
 // Function to add a new book
 void addBook(int id, char title[], char author[], int quantity) {
+    allocateMemory();  // Ensure enough memory is available
     library[book_count].id = id;
-    strcpy(library[book_count].title, title);
-    strcpy(library[book_count].author, author);
+    myStrcpy(library[book_count].title, title); 
+    myStrcpy(library[book_count].author, author);  
     library[book_count].quantity = quantity;
+    library[book_count].updated = 0;  
     book_count++;
     printf("Book added!\n");
 }
@@ -30,6 +72,7 @@ void updateBookQuantity(int id, int quantity) {
     for (int i = 0; i < book_count; i++) {
         if (library[i].id == id) {
             library[i].quantity = quantity;
+            library[i].updated = 1;  
             printf("Quantity updated!\n");
             return;
         }
@@ -37,11 +80,26 @@ void updateBookQuantity(int id, int quantity) {
     printf("Book not found!\n");
 }
 
+// Function to list all books that have been updated
+void listUpdatedBooks() {
+    int found = 0;
+    printf("Updated books:\n");
+    for (int i = 0; i < book_count; i++) {
+        if (library[i].updated) {
+            printf("ID: %d, Title: %s, Author: %s, Quantity: %d\n", library[i].id, library[i].title, library[i].author, library[i].quantity);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No books have been updated.\n");
+    }
+}
+
 // Function to search for books by author
 void searchBooksByAuthor(char author[]) {
     int found = 0;
     for (int i = 0; i < book_count; i++) {
-        if (strcmp(library[i].author, author) == 0) {
+        if (myStrcmp(library[i].author, author) == 0) {  
             printf("ID: %d, Title: %s, Quantity: %d\n", library[i].id, library[i].title, library[i].quantity);
             found = 1;
         }
@@ -51,12 +109,13 @@ void searchBooksByAuthor(char author[]) {
     }
 }
 
+// Main function to provide menu and handle user input
 int main() {
     int choice, id, quantity;
     char title[50], author[50];
 
     while (1) {
-        printf("\n1. Add New Book\n2. Update Book Quantity\n3. Search Book by Author\n4. Exit\nEnter choice: ");
+        printf("\n1. Add New Book\n2. Update Book Quantity\n3. Search Book by Author\n4. List Updated Books\n5. Exit\nEnter choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -69,7 +128,7 @@ int main() {
                 scanf(" %[^\n]s", author);
                 printf("Enter Quantity: ");
                 scanf("%d", &quantity);
-                addBook(id, title, author, quantity);
+                addBook(id, title, author, quantity);  // Add a new book
                 break;
 
             case 2:
@@ -77,17 +136,22 @@ int main() {
                 scanf("%d", &id);
                 printf("Enter new quantity: ");
                 scanf("%d", &quantity);
-                updateBookQuantity(id, quantity);
+                updateBookQuantity(id, quantity);  // Update quantity
                 break;
 
             case 3:
                 printf("Enter Author: ");
                 scanf(" %[^\n]s", author);
-                searchBooksByAuthor(author);
+                searchBooksByAuthor(author);  // Search books by author
                 break;
 
             case 4:
+                listUpdatedBooks();  // List updated books
+                break;
+
+            case 5:
                 printf("Exiting...\n");
+                free(library);  // Free dynamically allocated memory before exiting
                 return 0;
 
             default:
