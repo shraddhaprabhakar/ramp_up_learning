@@ -62,7 +62,7 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        if (choice == 1) { **//adding a product**
+        if (choice == 1) {   **//adding a product**
             cout << "Enter Product ID: ";
             cin >> id;
             cout << "Enter Product Name: ";
