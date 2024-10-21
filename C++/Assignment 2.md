@@ -56,9 +56,9 @@ int main() {
 
     while (true) {
         cout << "\n1. Add New Product\n";
-        cout << "2. Update Stock Quantity\n";
-        cout << "3. Search Products by Category\n";
-        cout << "4. Exit\n";
+        cout << "2.  Update Stock Quantity\n";
+        cout << "3.  Search Products by Category\n";
+        cout << "4.  Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 __
