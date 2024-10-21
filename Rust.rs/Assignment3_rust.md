@@ -395,7 +395,7 @@ mod tests {
 }
 
 **Answer**
-**Explanation:**
+**Explanation:** Modules define whether we want the functions to be public or private, hence we make it public before using it in the main function.
 We need to make the Ticket struct and the new method public so they can be accessed from outside the ticket module. At the same time, we should keep the struct fields (title, description, and status) private to enforce encapsulation. Items inside a module (mod) are private by default. This means that if you define a struct, function, or any other item inside a module, it is only accessible within that module or any child modules unless explicitly made public using the pub keyword.
 mod ticket {
     // Make the Ticket struct public so it can be used outside this module
@@ -456,4 +456,148 @@ mod tests {
     //     };
     // }
 }
+
+**Part: Encapsulation**
+pub mod ticket {
+    pub struct Ticket {
+        title: String,
+        description: String,
+        status: String,
+    }
+
+    impl Ticket {
+        pub fn new(title: String, description: String, status: String) -> Ticket {
+            if title.is_empty() {
+                panic!("Title cannot be empty");
+            }
+            if title.len() > 50 {
+                panic!("Title cannot be longer than 50 bytes");
+            }
+            if description.is_empty() {
+                panic!("Description cannot be empty");
+            }
+            if description.len() > 500 {
+                panic!("Description cannot be longer than 500 bytes");
+            }
+            if status != "To-Do" && status != "In Progress" && status != "Done" {
+                panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
+            }
+
+            Ticket {
+                title,
+                description,
+                status,
+            }
+        }
+
+        // TODO: Add three public methods to the `Ticket` struct:
+        //  - `title` that returns the `title` field.
+        //  - `description` that returns the `description` field.
+        //  - `status` that returns the `status` field.
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::ticket::Ticket;
+
+    #[test]
+    fn description() {
+        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        assert_eq!(ticket.description(), "A description");
+    }
+
+    #[test]
+    fn title() {
+        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        assert_eq!(ticket.title(), "A title");
+    }
+
+    #[test]
+    fn status() {
+        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        assert_eq!(ticket.status(), "To-Do");
+    }
+}
+
+**Answer**
+**Explanation**
+&self: This is a reference to the instance of the struct Ticket. 
+Return type: The method returns a value of type &str, which is a reference to a string slice. By returning &str, we are returning a reference to the string stored in the title field of the struct, but not transferring ownership of that string to the caller.
+&self.title - Accessing a field: This is how we access the title field of the Ticket instance.
+We are giving controlled access here by passing everything as reference in read only method. The fields are private in mod and it enforces encapsulation.
+pub mod ticket {
+    pub struct Ticket {
+        title: String,
+        description: String,
+        status: String,
+    }
+
+    impl Ticket {
+        pub fn new(title: String, description: String, status: String) -> Ticket {
+            if title.is_empty() {
+                panic!("Title cannot be empty");
+            }
+            if title.len() > 50 {
+                panic!("Title cannot be longer than 50 bytes");
+            }
+            if description.is_empty() {
+                panic!("Description cannot be empty");
+            }
+            if description.len() > 500 {
+                panic!("Description cannot be longer than 500 bytes");
+            }
+            if status != "To-Do" && status != "In Progress" && status != "Done" {
+                panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
+            }
+
+            Ticket {
+                title,
+                description,
+                status,
+            }
+        }
+
+        // Public method to return the `title` field
+        pub fn title(&self) -> &str {
+            &self.title
+        }
+
+        // Public method to return the `description` field
+        pub fn description(&self) -> &str {
+            &self.description
+        }
+
+        // Public method to return the `status` field
+        pub fn status(&self) -> &str {
+            &self.status
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::ticket::Ticket;
+
+    #[test]
+    fn description() {
+        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        assert_eq!(ticket.description(), "A description");
+    }
+
+    #[test]
+    fn title() {
+        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        assert_eq!(ticket.title(), "A title");
+    }
+
+    #[test]
+    fn status() {
+        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        assert_eq!(ticket.status(), "To-Do");
+    }
+}
+
+**Part 6: 
+
 
