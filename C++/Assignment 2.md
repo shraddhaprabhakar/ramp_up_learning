@@ -91,9 +91,8 @@ __
             cout << "Invalid choice. Try again.\n";
         }
     }
-    
+     return 0;
+}
 
 We can modify this code and make it better using class as it provides more modularity, we can make the fields private, we can make a constructor, use getters and setters and use a vector for dynamic size rather than fixed size.
 
-    return 0;
-}
