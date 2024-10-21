@@ -16,7 +16,7 @@ int productCount = 0;   **// Keeps track of how many products have been added to
 
 **// Function to add a new product**
 void addProduct(int id, string name, string category, int quantity) {  **//writing a function called addProduct which adds new product to inventory.**
-    products[productCount].id = id;     **//accessing the current position in the array products.**
+    products[productCount].id = id;     **productCount is the index of the next available spot in the array.**
     products[productCount].name = name;  **//the dot operator (.) is used to access individual fields within a structure.** 
     products[productCount].category = category;
     products[productCount].quantity = quantity;
