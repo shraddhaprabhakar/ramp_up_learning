@@ -1,3 +1,4 @@
+**Using Structs**
 #include <iostream>    **//used for input (cin) and output (cout) , cin is stream extraction and cout is stream insertion.**
 #include <string>      **//use this for dealing with string data type which is used to handle texts.**
  
